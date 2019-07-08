@@ -29,7 +29,16 @@
               "node_modules/simple-line-icons/css/simple-line-icons.css",
               "src/scss/style.scss",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/animate.css/animate.css"
+              "node_modules/animate.css/animate.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/carousel.css",
+              "src/assets/css/LineIcons.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/nivo-lightbox.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.css",
+              "src/assets/css/responsive.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["./node_modules"]
@@ -45,7 +54,25 @@
               "./src/assets/js/footer-reveal.min.js",
               "./src/assets/js/active.js",
               "./node_modules/wowjs/dist/wow.js",
-              "./src/assets/js/script.js"
+              "./src/assets/js/bootstrap.min.js",
+              "./src/assets/js/jquery.easing.min.js",
+              "./src/assets/js/jquery.magnific-popup.min.js",
+              "./src/assets/js/jquery.nav.js",
+              "./src/assets/js/jquery-min.js",
+              "./src/assets/js/main.js",
+              "./src/assets/js/nivo-lightbox.js",
+              "./src/assets/js/owl.carousel.js",
+              "./src/assets/js/popper.min.js",
+              "./src/assets/js/scrolling-nav.js",
+              "./src/app/views/login/vendor/jquery/jquery-3.2.1.min.js",
+              "./src/app/views/login/vendor/animsition/js/animsition.min.js",
+              "./src/app/views/login/vendor/bootstrap/js/popper.js",
+              "./src/app/views/login/vendor/bootstrap/js/bootstrap.min.js",
+              "./src/app/views/login/vendor/select2/select2.min.js",
+              "./src/app/views/login/vendor/daterangepicker/moment.min.js",
+              "./src/app/views/login/vendor/daterangepicker/daterangepicker.js",
+              "./src/app/views/login/vendor/countdowntime/countdowntime.js",
+              "./src/app/views/login/js/main.js"
             ]
           },
           "configurations": {

@@ -10,7 +10,7 @@ declare var $: any;
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss', './css/animate.css', './css/bootstrap.min.css', './css/carousel.css', './css/LineIcons.css', './css/magnific-popup.css', './css/nivo-lightbox.css', './css/responsive.css', './css/owl.carousel.css', './css/owl.theme.css']
+  styleUrls: ['./homepage.component.scss', './css/bootstrap1.min.css', './css/ionicons.min.css', './css/animate.css', './css/magnific-popup.css', './css/responsive.css', './css/slick.css', './css/slick.theme.css', './css/themify-icons.css', './css/bootstrap.min.css', './css/carousel.css', './css/LineIcons.css', './css/nivo-lightbox.css', './css/owl.carousel.css', './css/owl.theme.css']
 })
 export class HomepageComponent implements OnInit {
   private _isUserloggedIn: boolean = false;
