@@ -1,0 +1,104 @@
+.card{
+    box-shadow: 0px 2px 2px #888888;
+    max-height: 533px;
+}
+.card-body {
+    margin-top: 40px;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+.card-header{
+    background-color: #00670c;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.hidden-md {
+    display:none !important;
+}
+.single_btn{
+    background: #00670c !important;
+    margin-left: -5px;
+    color: #ffffff !important;
+}
+.btn_right{
+    text-align: right;
+    right: 2%;
+}
+.add_icon{
+    margin-top: 5px;
+    font-size: 18px;
+    border: 1px solid #00670c;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+.form-group .close_btn{
+    position: absolute;
+    top: 0%;
+    line-height: 38px;
+    font-size: 14px;
+    right: 9%;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .hidden-sm{
+        display: none !important;
+    }
+    .hidden-md {
+        display:block !important;
+    }
+    .btn-group-toggle{
+        margin-left: -10px;
+    }
+    .card{
+        overflow-x: auto;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 40px;
+        overflow-y: scroll !important;
+        overflow-x: scroll !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .hidden-sm{
+        display: none !important;
+    }
+    .hidden-md {
+        display:block !important;
+    }
+    .btn-group-toggle{
+        margin-left: -10px;
+    }
+    .card{
+        overflow-x: auto;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 40px;
+        overflow-y: scroll !important;
+        overflow-x: scroll !important;
+    }
+    .containerdiv .fa {
+        font-size: 20px;
+        margin-top: 5px;
+        vertical-align: middle;
+        border: 1px solid #00670c;
+        padding: 3px 5px;
+        border-radius: 3px;
+    }
+}

@@ -1,0 +1,144 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-right">
+      <div class="col-md-4 col-sm-4">
+        <h1 class="Enter-details">
+          RELEASE ORDER VERIFICATION LIST
+        </h1>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+          <input class="form-control autocomplete" [(ngModel)]="searchValue" (input)="onSearchChange(searchValue)"
+            placeholder="Search by release order no." style="border: 1px solid #00670c; position:relative;" />
+          <a (click)="clearSearch()">
+            <i class="fa fa-close close_btn"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 btn_right">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active btn-active" (click)="onStatusSelectionChange('false')">
+            <input type="radio" [checked]="verifyByAreaManager === 'false'" name="options" checked> Pending
+          </label>
+          <label class="btn btn-secondary" (click)="onStatusSelectionChange('true')">
+            <input type="radio" [checked]="verifyByAreaManager === 'true'" name="options"> Completed
+          </label>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<!-- pending -->
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+            <div class="pagination-outer" style="float: right;margin-right: 5px;">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                    <span class="page-link" (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                  </li>
+                  <li class="page-item active">
+                    <span class="page-link">
+                      {{updatedData.currentPage}}
+                      <!-- <span class="sr-only">{{updatedData.page}}</span> -->
+                    </span>
+                  </li>
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                    <span class="page-link" (click)="prevAndNext('next' ,false )">&raquo;</span>
+                  </li>
+                  <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}}
+                      of {{updatedData.total}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">RO No.</th>
+                    <th scope="col">WR No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Mandi(WH)</th>
+                    <th scope="col">Commodity</th>
+                    <th scope="col">Quantity(Qt)</th>
+                    <th scope="col">Bags</th>
+                    <th scope="col">Created</th>
+                    <th scope="col" style="color:#00670c;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ro of updatedData.list">
+                    <td>{{ro.releaseOrderNumber}}</td>
+                    <td>{{ro.marketProductId.wrNumber}}</td>
+                    <td><span *ngIf="ro.user[0]">{{ro.user[0].name}}</span></td>
+                    <td><span *ngIf="ro.user[0]">{{ro.user[0].phoneNumber}}</span></td>
+                    <td><span *ngIf="ro.mandi[0]">{{ro.mandi[0].name}}</span></td>
+                    <td><span *ngIf="ro.product[0]">{{ro.product[0].name}}</span></td>
+                    <td>{{ro.quantity}}</td>
+                    <td>{{ro.totalBags}}</td>
+                    <td>{{ro.createdAt}}</td>
+                    <td class="text-center" *ngIf="verifyByAreaManager=='true'">{{ro.verifyByAreaManagerDate | date
+                      :'MMM ,dd yyyy'}}</td>
+                    <td *ngIf="verifyByAreaManager=='false'">
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                          <button type="button" class="btn btn-block btn-success active" (click)="openModal(ro._id,'Do you want to verify this commodity ?','openDeleteModal')"
+                            data-toggle="modal" data-target="#releaseOrder" aria-pressed="true" style="background: #00670c;text-align: center; width: 100%; padding: 3px 5px; margin-top: -3px; font-size: 10px;">Verify</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lab Asst fill detail Modal -->
+<div id="releaseOrder" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Verify Commodity</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body" style="text-align: center;">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="inline-part-down">
+              <div class="form-group row">
+                <p style="margin-left: 13px;">{{popUpMsg}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteSuccess()">Yes</button>
+        <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Lab Asst fill detail End -->

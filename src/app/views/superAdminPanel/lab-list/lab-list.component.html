@@ -1,0 +1,339 @@
+<Section id="page_heading">
+    <div class="page-heading">
+        <div class="row margin-left-right">
+            <div class="col-md-6 col-sm-6">
+        <h1 class="Enter-details">
+          LAB LIST
+        </h1>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="form-group">
+            <input class="form-control autocomplete" [(ngModel)]="searchValue"
+            (input)="onSearchChange(searchValue)" placeholder="Search by Kisan Name & No."
+             style="border: 1px solid #00670c;" />
+            <a (click)="clearSearch()">
+              <i class="fa fa-close close_btn"></i>
+          </a>
+          </div>
+        </div>
+              
+              <div class="col-sm-3 col-md-3">
+                  
+                <button type="button" class="btn btn-block btn-success active" aria-pressed="true" data-toggle="modal" data-target="#enterLab" 
+                style="background: #00670c;margin-left: -5px;padding: 6px 6px;">Add New Lab</button>
+              
+              </div>
+              <div class="clearfix"></div>
+    </div>
+    </div>
+  </Section>
+  
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 margin-left-right">
+        <div class="card" style="margin-bottom: 0px;">
+          <div class="row">
+            <div class="col-md-4 offset-md-8">
+              <div class="pagination-outer" style="float: right;margin-right: 5px;">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                          <span class="page-link"  (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                        </li>
+                        <li class="page-item active">
+                          <span class="page-link">
+                            {{updatedData.currentPage}}
+                            <span class="sr-only">(current)</span>
+                          </span>
+                        </li>
+                        <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                          <span class="page-link"  (click)="prevAndNext('next' ,false )">&raquo;</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}} of {{updatedData.total}}</a></li>
+                      </ul>
+                </nav>
+              </div>
+              </div>
+            </div>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 margin-left-right">
+                <table class="table">
+                    <thead>
+                      <tr>
+                       <th scope="col">Name</th>
+                        <th scope="col">Licence No.</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Assign Lab Head</th>
+                        <th scope="col">Assign Lab Asst.</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col" style="color:#00670c;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let cif of updatedData.list">
+                        <td>{{cif.name}}</td> 
+                        <td>{{cif.licenceNumber}}</td>
+                        <td>{{cif.address.line1}}</td>
+                        <td>{{cif.labHeadId.name}}</td>
+                        <td>{{cif.labAsstId.name}}</td>
+                        <td>{{cif.createdAt | date :'MMM ,dd yyyy'}}</td>
+                        <td><div class="row">
+                          <div class="col-md-4 col-sm-4 cif-list-icon"><i class="fa fa-plus-circle" data-toggle="modal" data-target="#assignList" 
+                            aria-hidden="true"></i></div>
+                          <div class="col-md-4 col-sm-4 cif-list-icon"><i class="fa fa-pencil-square-o" data-toggle="modal" data-target="#editLab"
+                             aria-hidden="true"></i></div>
+                          <div class="col-md-4 col-sm-4 cif-list-icon"><i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteLab"
+                             aria-hidden="true" style="color: red;"></i></div>
+                      </div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+                </div>
+              </div>
+             </div>
+      </div>
+    </div>
+
+  <!-- Add New Mandi Modal -->
+  <div id="enterLab" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-success" role="document">
+       <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Enter Lab Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+  <!-- model body section -->
+           <div class="modal-body modal-text">
+          <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="ccnumber">Lab Name</label>
+                  <input type="text" class="form-control" id="warehouseid" placeholder="Lab Name" value="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="ccnumber">Lab Licence Number</label>
+                      <input type="text" class="form-control" id="warehouseid" placeholder="Lab Licence Number" value="">
+                    </div>
+                  </div>
+                </div>
+            <div class="row">
+              <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="ccnumber">Address</label>
+                        <textarea id="textarea-input" name="textarea-input" class="form-control" placeholder="Address" rows="1"></textarea>
+                      </div>
+                    </div>
+            </div>
+           </div>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn_save">Save</button>
+                 </div>
+      </div>
+      </div>
+      </div>
+  <!-- Add New Mandi Modal End -->
+
+  <!-- Assign head/asst Modal -->
+<div id="assignList" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-success" role="document">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Assign List</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+<!-- model body section -->
+         <div class="modal-body modal-text">
+            <p>Lab Head List</p>
+         <div class="table-responsive assign-head">
+           <table class="lablisttable">
+              <thead>
+                  <tr>
+                      <th class="col-md-8">Name</th>
+                      <th class="col-md-4">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>CGR Labs Sri Ganganagar</td>
+                      <td>
+                          <div style="color: green;">Assigned</div>
+                      </td>
+                  </tr>
+                    <!-- <tr>
+                      <td>Mada Ram</td>
+                      <td>
+                          <div style="cursor: pointer;"><span class="badge badge-default">Assign</span> </div>
+                      </td>
+                    </tr> -->
+                    <tr>
+                        <td>CGR Labs Sri Ganganagar</td>
+                        <td>
+                            <div style="color: green;">Assigned</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CGR Labs Sri Ganganagar</td>
+                        <td>
+                            <div style="color: green;">Assigned</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CGR Labs Sri Ganganagar</td>
+                        <td>
+                            <div style="color: green;">Assigned</div>
+                        </td>
+                    </tr>
+              </tbody>
+           </table>
+         </div>
+         <p style="border-top: 1px solid #00670c;">Lab Assistant List</p>
+         <div class="table-responsive">
+           
+            <table class="lablisttable">
+               <thead>
+                   <tr>
+                       <th class="col-md-8">Name</th>
+                       <th class="col-md-4">Action</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr>
+                       <td>CGR Labs Sri Ganganagar</td>
+                       <td>
+                           <div style="color: green;">Assigned</div>
+                       </td>
+                   </tr>
+                     <!-- <tr>
+                       <td>Mada Ram</td>
+                       <td>
+                           <div style="cursor: pointer;"><span class="badge badge-default">Assign</span> </div>
+                       </td>
+                     </tr> -->
+                     <tr>
+                         <td>CGR Labs Sri Ganganagar</td>
+                         <td>
+                             <div style="color: green;">Assigned</div>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>CGR Labs Sri Ganganagar</td>
+                         <td>
+                             <div style="color: green;">Assigned</div>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>CGR Labs Sri Ganganagar</td>
+                         <td>
+                             <div style="color: green;">Assigned</div>
+                         </td>
+                     </tr>
+               </tbody>
+            </table>
+          </div>
+         </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success btn_save">Add</button>
+               </div>
+    </div>
+    </div>
+    </div>
+<!-- Assign head/asst Modal End -->
+
+<!-- Add New Mandi Modal -->
+<div id="editLab" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-success" role="document">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Enter Lab Details</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+<!-- model body section -->
+         <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="ccnumber">Lab Name</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="Lab Name" value="CGR Labs Jaipur">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="ccnumber">Lab Licence Number</label>
+                    <input type="text" class="form-control" id="warehouseid" placeholder="Lab Licence Number" value="TC-6492(in lieu of To-3644 )">
+                  </div>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="ccnumber">Address</label>
+                      <textarea id="textarea-input" name="textarea-input" class="form-control" placeholder="Address" rows="1" value=""></textarea>
+                    </div>
+                  </div>
+          </div>
+         </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success btn_save">Save</button>
+               </div>
+    </div>
+    </div>
+    </div>
+<!-- Add New Mandi Modal End -->
+
+<!-- Delete Mandi Modal -->
+<div id="deleteLab" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-success" role="document">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Delete Lab</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+  <!-- model body section -->
+          <div class="modal-body" style="text-align: center;">
+            <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="inline-part-down">
+                  <div class="form-group row">
+                    <p style="margin-left: 13px;">Do you want to delete this Lab ?</p>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary">Yes</button>
+            <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+          </div>
+    </div>
+    </div>
+    </div>
+  <!-- Delete Mandi End -->
+  
+  
+  
+  
+  

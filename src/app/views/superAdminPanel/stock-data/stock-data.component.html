@@ -1,0 +1,82 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-right">
+      <div class="col-md-2 col-sm-2">
+        <h1 class="Enter-details">
+          STOCK DATA
+        </h1>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+          <select class="form-control" required [(ngModel)]='form.mandiId' (ngModelChange)='getProductAndUserList()'
+            style="border: 1px solid #00670c;">
+            <option disabled hidden [value]="selectUndefinedOptionValue">Select Warehouse</option>
+            <option *ngFor="let list of mandiList" value='{{list._id}}'>{{list.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+          <select class="form-control" required [(ngModel)]='form.productId' style="border: 1px solid #00670c;">
+            <option disabled hidden [value]="selectUndefinedOptionValue">Select Product</option>
+            <option *ngFor="let list of productList" value='{{list._id}}'>{{list.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+          <select class="form-control" required [(ngModel)]='form.userId' style="border: 1px solid #00670c;">
+            <option disabled hidden [value]="selectUndefinedOptionValue">Select User</option>
+            <option *ngFor="let list of userList" value='{{list._id}}'>{{list.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2">
+        <div class="form-group">
+          <input [(ngModel)]='form.date' class="form-control" id="date-input" type="date" name="date-input" placeholder="Date"
+            required style="border: 1px solid #00670c;">
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-2">
+
+        <button type="button" class="btn btn-block btn-success active" aria-pressed="true" (click)='stockData()' style="background: #00670c;margin-left: -5px;padding: 6px 6px;">Search</button>
+
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Commodity</th>
+                    <th scope="col">Total Quantity(qt)</th>
+                    <th scope="col">Total Bags</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let stockList of updatedData">
+                    <td>{{stockList.product[0].name}}</td>
+                    <td>{{stockList.totalSumQuantity}}</td>
+                    <td>{{stockList.totalSumBags}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;margin-top: 5px;font-size: 25px;color: #00670c; letter-spacing: 3px;text-transform: uppercase;"
+          *ngIf="updatedData == 0"><img src="assets/img/avatars/list_empty1.png" style="width: 180px;"><br>{{emptyListMsg}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<Section id="page_heading">
+    <div class="page-heading">
+        <div class="row margin-left-right">
+            <div class="col-md-2 col-sm-2">
+        <h1 class="Enter-details">
+            USER LIST
+        </h1>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="form-group">
+                    <input class="form-control autocomplete" placeholder="Search from list" style="border: 1px solid #00670c;" />
+                  </div>
+    </div>
+              <div class="col-md-2 col-sm-2">
+                  <div class="form-group">
+                      <input class="form-control" id="date-input" type="date" name="date-input" placeholder="Start date" style="border: 1px solid #00670c;">
+                        </div>
+              </div>
+              <div class="col-md-2 col-sm-2">
+                  <div class="form-group">
+                      <input class="form-control" id="date-input" type="date" name="date-input" placeholder="End date" style="border: 1px solid #00670c;">
+                        </div>
+              </div>
+              <div class="col-sm-2 col-md-2">
+                  
+                  <button type="button" class="btn btn-block btn-success active" aria-pressed="true" 
+                  style="background: #00670c;margin-left: -5px;padding: 6px 6px;">Search</button>
+                
+              </div>
+              <div class="clearfix"></div>
+    </div>
+    </div>
+  </Section>
+
+  <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 margin-left-right">
+          <div class="card" style="margin-bottom: 0px;">
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12 col-sm-12 margin-left-right">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">CIF NO.</th>
+                          <th scope="col">Old WR No.</th>
+                          <th scope="col">WR Number</th>
+                          <th scope="col">I'd</th>
+                          <th scope="col" style="color:#00670c;">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>198</td>
+                          <td>STD</td>
+                          <td>Old Bihari Oil Mill Godown No. 5</td>
+                          <td><span style="color: #00670c;">Storage</span></td>
+                          <td><div class="row">
+                              <div class="col-sm-12 col-md-12">
+                      
+                                <button type="button" class="btn btn-block btn-success active" 
+                                data-toggle="modal" data-target="#asstFillDetail" aria-pressed="true" 
+                                style="background: #00670c;text-align: center; width: 75%; padding: 3px 0px; margin-top: -3px; 
+                                font-size: 10px; margin-left: 15%;">View Invoice</button>
+                              
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                </div>
+        </div>
+      </div>
+
+      <!-- Lab Asst fill detail Modal -->
+<div id="asstFillDetail" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-success" role="document">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Generate Invoice</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+  <!-- model body section -->
+         <div class="modal-body">
+           <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="inline-part-down">
+                  <div class="form-group row">
+                    <table class="pdf-form" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+                      <tr>
+                        <td>Test Items/Parameters</td>
+                        <td>Test Method</td>
+                        <td>Unit</td>
+                        <td>Test Result(%)</td>
+                        <td>Condition</td>
+                    </tr>
+                    <tr>
+                        <td>Moisture</td>
+                        <td>IS 3579: 1966, Reaff 2006</td>
+                        <td>%</td>
+                        <td><input type="text" class="form-control" id="warehouseid" placeholder="Test Result"></td>
+                        <td><select class="form-control" id="warehouseid" placeholder="Select">
+                          <option>Select</option>
+                          <option>Grade 1</option>
+                          <option>Grade 2</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Foreign Matter , other oil seeds</td>
+                        <td>IS 3579: 1966, Reaff 2006</td>
+                        <td>%</td>
+                        <td><input type="text" class="form-control" id="warehouseid" placeholder="Test Result"></td>
+                        <td><select class="form-control" id="warehouseid" placeholder="Select">
+                          <option>Select</option>
+                          <option>Grade 1</option>
+                          <option>Grade 2</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                      <td>Oil</td>
+                      <td>IS 3579: 1966, Reaff 2006</td>
+                      <td>%</td>
+                      <td><input type="text" class="form-control" id="warehouseid" placeholder="Test Result"></td>
+                      <td><select class="form-control" id="warehouseid" placeholder="Select">
+                        <option>Select</option>
+                        <option>Grade 1</option>
+                        <option>Grade 2</option>
+                      </select></td>
+                  </tr>
+                    </table>
+                  </div>
+                </div>
+            </div>
+           </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="ccnumber">Variety</label>
+                <select class="form-control" id="warehouseid" placeholder="Select">
+                  <option>Select</option>
+                  <option>Grade 1</option>
+                  <option>Grade 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="ccnumber">Others</label>
+                      <textarea id="textarea-input" name="textarea-input" class="form-control" placeholder="" rows="1"></textarea>
+                    </div>
+                  </div>
+          </div>
+         </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success btn_save">Send</button>
+               </div>
+    </div>
+    </div>
+    </div>
+  <!-- Lab Asst fill detail End -->

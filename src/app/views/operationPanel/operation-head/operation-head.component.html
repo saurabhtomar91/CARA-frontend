@@ -1,0 +1,239 @@
+<Section id="page_heading">
+  <div class="page-heading">
+      <div class="row margin-left-right">
+          <div class="col-md-5 col-sm-5">
+      <h1 class="Enter-details">
+        COMMODITY FOR OPEARTION HEAD
+      </h1>
+      </div>
+      <div class="col-md-3 col-sm-3">
+          <div class="form-group">
+              <input class="form-control autocomplete" [(ngModel)]="searchValue"
+              (input)="onSearchChange(searchValue)" placeholder="Search by cif, commodity"
+               style="border: 1px solid #00670c;" />
+              <a (click)="clearSearch()">
+                <i class="fa fa-close close_btn"></i>
+            </a>
+            </div>
+      </div>
+      <div class="col-sm-4 col-md-4 btn_right">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active btn-active"  (click)="onStatusSelectionChange(false)" >
+              <input type="radio" [checked]="listType === 'PENDING'"  name="options" checked> Pending
+            </label>
+            <label class="btn btn-secondary" (click)="onStatusSelectionChange(true)">
+              <input type="radio" [checked]="listType === 'COMPLETED'"   name="options"> Complete
+            </label>
+          </div>
+            </div>
+            <div class="clearfix"></div>
+    </div>
+ </div>
+</Section>
+
+<!-- pending -->
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+              <div class="pagination-outer" style="float: right;margin-right: 5px;">
+                  <nav aria-label="...">
+                      <ul class="pagination">
+                          <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                            <span class="page-link"  (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                          </li>
+                          <li class="page-item active">
+                            <span class="page-link">
+                              {{updatedData.currentPage}}
+                              <span class="sr-only">(current)</span>
+                            </span>
+                          </li>
+                          <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                            <span class="page-link"  (click)="prevAndNext('next' ,false )">&raquo;</span>
+                          </li>
+                          <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}} of {{updatedData.total}}</a></li>
+                        </ul>
+                  </nav>
+                </div>
+            </div>
+          </div>
+        <div class="card-body">
+          <div class="row">
+              <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">CIF NO.</th>
+                      <th scope="col">Old WR No.</th>
+                      <th scope="col">WR Number</th>
+                      <th scope="col">I'd</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">User Type</th>
+                      <th scope="col">Commodity Name</th>
+                      <th scope="col">Total Quantity</th>
+                      <th scope="col">Total Bags</th>
+                      <th scope="col">Rem. Quantity</th>
+                      <th scope="col">Rem. Bags</th>
+                      <th scope="col">Variety</th>
+                      <th scope="col">Mandi(WH)</th>
+                      <th scope="col">Storage Type</th>
+                      <th scope="col" style="color:#00670c;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cif of updatedData.list">
+                      <td>{{cif.cifNumber}}</td> 
+                      <td>{{cif.oldWrNumber}}</td>
+                      <td>{{cif.wrNumber}}</td>
+                      <td>{{cif.userId[0].uniqueId}}</td>
+                      <td>{{cif.userId[0].name}}</td>
+                      <td>{{cif.userId[0].userType}}</td>
+                      <td>{{cif.productId[0].name}}</td>
+                      <td>{{cif.wrQuantity}}</td>
+                      <td>{{cif.wrTotalBags}}</td>
+                      <td>{{cif.quantity}}</td>
+                      <td>{{cif.totalBags}}</td>
+                      <td>{{cif.variety}}</td>
+                      <td>{{cif.mandiId.name}}</td>
+                      <td><span style="color: #00670c;">{{cif.storageType}}</span></td>
+                      <td><div class="row">
+                          <div class="col-md-6 col-sm-6 cif-list-icon"><a routerLink="/operation/wrReport"><i class="fa fa-eye" aria-hidden="true"></i></a></div>
+                          <div class="col-md-6 col-sm-6 cif-list-icon"><i class="fa fa-minus" data-toggle="modal" 
+                          data-target="#asstFillDetail" aria-hidden="true"></i></div>
+                          <!-- <div class="col-md-4 col-sm-4 cif-list-icon"><i class="fa fa-trash-o" aria-hidden="true" style="color: red;"></i></div> -->
+                      </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+              </div>
+              </div>
+              <div style="text-align: center;margin-top: 5px;font-size: 25px;color: #00670c; letter-spacing: 3px;text-transform: uppercase;" *ngIf="updatedData.length == 0"><img src="assets/img/avatars/list_empty1.png" style="width: 180px;"><br>{{emptyListMsg}}</div>
+            </div>
+            </div>
+    </div>
+  </div>
+
+<!-- release order Modal -->
+<div id="asstFillDetail" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-success" role="document">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Release Order</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+  <!-- model body section -->
+         <div class="modal-body">
+           <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="inline-part-down">
+                  <div class="form-group row">
+                    <table class="pdf-form" style="margin-left: 10px; margin-right: 10px;margin-bottom: 10px;">
+                        <tr>
+                            <td>Date</td>
+                            <td colspan="2">Dec,13 2018</td>
+                            <td colspan="2">Reference No.</td>
+                            <td colspan="4"><input type="text" name="refNo" class="form-control" placeholder="Reference Number" required=""></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center" colspan="9"><b>Warehouse Detail</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Warehouse Name</td>
+                            <td colspan="6">Godown No. 01 of Prem Seeds</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Warehouse Address</td>
+                            <td colspan="6">Padampur Road Situated at Goluwala,RJ1456,335802 Rajasthan.</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center col-md-8" colspan="9"><b>Client Detail</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Name</td>
+                            <td colspan="3">saurabh Sons</td>
+                            <td colspan="2">Phone Number</td>
+                            <td colspan="2">8010033312</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Address</td>
+                            <td colspan="7">Jmd megapolis  Sohna road</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Auth. Person Name</td>
+                            <td colspan="3"><input type="text" name="authPersonName" class="form-control" placeholder=" Authorized person name"></td>
+                             <td colspan="1">Broker Name</td>
+                            <td colspan="3"><input type="text" name="broker" class="form-control" placeholder=" Broker Name"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Id Proof Type</td>
+                            <td colspan="3">
+                                <select class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="panNumber">Pan Card</option>
+                                    <option value="DL">Driving Licence</option>
+                                    <option value="aadhaar">Aadhaar Card</option>
+                                    <option value="voterId">Voter Id</option>
+                                    
+                                </select>
+                            </td>
+                            <td colspan="1">Id Proof No.</td>
+                            <td colspan="3"><input type="text" name="idProofNO" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Total Bags</td>
+                            <td colspan="3">3210</td>
+                             <td colspan="2">Quantity(qt)</td>
+                            <td colspan="2">36289.000</td>
+                            
+                        </tr>
+                        <tr>
+                            <td colspan="2">Rem. Total Bags</td>
+                            <td colspan="3">3000</td>
+                             <td colspan="2">Quantity(qt)</td>
+                            <td colspan="2">33914.953</td>                                                  
+                        </tr>
+                        <tr>
+                            <td colspan="2">Rem. Release Bags</td>
+                            <td colspan="3">3000</td>
+                            <td colspan="2">Quantity (qt)</td>
+                            <td colspan="2">33914.953</td>                                                   
+                        </tr>
+
+                        <tr>
+                            <td>WR NO.</td>
+                            <td colspan="2">WR Date</td>
+                            <td colspan="2">Commodity</td>
+                            <td>Release Bags</td>
+                            <td>Release(Qt)</td>
+                            <td>Bal. Bags</td>
+                            <td>Bal(Qt)</td>
+                        </tr>
+                        <tr>
+                            <td>12280</td>
+                            <td colspan="2">Oct,30 2018</td>
+                            <td colspan="2">Flax Seed - Mandi Paid</td>
+                            <td><input type="text" numbers-only="" class="form-control" required=""></td>
+                            <td></td>
+                            <td>3000.000</td>
+                            <td>33914.953</td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+            </div>
+           </div>
+         </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success btn_save">Generate RO</button>
+               </div>
+    </div>
+    </div>
+    </div>
+  <!-- release order End -->

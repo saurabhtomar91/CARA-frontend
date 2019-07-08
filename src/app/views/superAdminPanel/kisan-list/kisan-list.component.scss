@@ -1,0 +1,128 @@
+// .page-heading{
+//     background: #ffffff;
+//     box-shadow: 0px 2px 2px #888888;
+//     padding: 5px 5px;
+//     color: #00670c;
+//     margin-top: -15px;
+//     margin-bottom: 9px;
+//     height: 45px;
+// }
+// .page-heading .Enter-details{
+//     text-transform: uppercase;
+//     font-size: 16px;
+//     line-height: 35px;
+// }
+.card{
+    box-shadow: 0px 2px 2px #888888;
+    max-height: 533px;
+}
+.card-body{
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+// .card-body {
+//     margin-top: 50px;
+// }
+// .card-header{
+//     background-color: #00670c;
+//     color: #ffffff;
+//     font-size: 16px;
+//     letter-spacing: 1px;
+// }
+// .card-header1{
+// border-top: 1px solid #cccccc;
+// }
+// .margin-left-right{
+//     padding-right: 5px !important;
+//     padding-left: 5px !important;
+// }
+// .cif-list-icon .fa{
+//     font-size: 18px;
+//     color: #00670c;
+//     padding: 3px 3px;
+//     cursor: pointer;
+// }
+// .cif-list-icon h4{
+//     color: #00670c;
+//     font-size: 18px;
+// }
+// .card-body thead{
+//     font-size: 14px;
+// }
+// .card-body tbody{
+//     font-size: 12px;
+// }
+// .card-body th{
+//     border-top: none;
+//     text-align: center;
+// }
+// .card-body td{
+//     text-align: center;
+// }
+// .card-body table{
+//     margin-top: -25px;
+//     margin-bottom: -25px;
+// }
+// .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+//     color: #ffffff !important;
+//     background-color: #00672c !important;
+//     border-color: #a5aeb7;
+// }
+// .pagination-outer{
+//     margin-top: 10px;
+//     float: right;
+//     margin-right: -20px;
+// }
+// .card .pagination-outer{
+//     margin-right: 0% !important;
+//     position: fixed;
+//     z-index: 999;
+//     top: 161px;
+//     right: 45px;
+// }
+.form-group .close_btn{
+    position: absolute;
+    top: 0%;
+    line-height: 38px;
+    font-size: 14px;
+    right: 9%;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+// rsponsive
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .card{
+        overflow-x: auto;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 40px;
+        overflow-y: scroll !important;
+        overflow-x: scroll !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .card{
+        overflow-x: auto;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 40px;
+        overflow-y: scroll !important;
+        overflow-x: scroll !important;
+    }
+}

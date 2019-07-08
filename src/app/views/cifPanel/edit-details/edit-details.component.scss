@@ -1,0 +1,79 @@
+.card{
+    box-shadow: 0px 2px 2px #888888;
+    margin-bottom: 0px;
+    // max-height: 483px;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+.fadeIn{
+    margin-bottom: 10px;
+}
+ .card-body {
+     margin-top: 0px;
+    //  overflow-x: auto;
+}
+.form-group{
+    padding: 5px 5px;
+}
+#myselect-container {
+    position:relative;
+    height:auto;
+    width:100%;
+    // z-index: 0;
+    margin-bottom: 36px;
+}
+#myselect-container select {
+    position:absolute;
+    z-index: 9999;
+}
+.detail-header{
+    text-align: center;
+    background: #00671c;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #ffffff;
+    padding: 5px 5px;
+    letter-spacing: 1px;
+}
+
+.tag-btn {
+    width: calc(100% - 0px);
+    text-align: center;
+    margin-bottom: 10px;
+}
+.view-inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+.tag-btn .btn-border {
+    border: 1px solid #00670c;
+    background-color: #fff;
+    color: #00670c;
+    /* border-radius: 25px; */
+    min-width: 80px;
+    padding: 5px 12px;
+}
+.tag-btn .btn-border:hover {
+    border: 1px solid #00670c;
+    background-color: #00670c;
+    color: #ffffff;
+}
+.button-border .btn {
+    margin: 0px 2px 0;
+}
+.button-border .btn:first-child {
+    margin-left: 0;
+}
+.inline-part-down {
+    margin-top: 29px;
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .card-body{
+        overflow-x: auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .card-body{
+        overflow-x: auto;
+    }
+}

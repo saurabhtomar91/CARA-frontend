@@ -1,0 +1,209 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-right">
+      <div class="col-md-4 col-sm-4">
+        <h1 class="Enter-details">
+          STATE AND CITY LIST
+        </h1>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group">
+          <!-- <label for="sel1">Select list:</label> -->
+          <select class="form-control" required [(ngModel)]='stateform.stateId' (ngModelChange)='getCityList()' style="border: 1px solid #00670c;">
+            <option disabled hidden [value]="selectUndefinedOptionValue">Select GSTIN</option>
+            <option *ngFor="let list of stateList" value='{{list._id}}'>{{list.stateName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2">
+        <div class="form-group">
+          <input class="form-control autocomplete" [(ngModel)]="searchValue" (input)="onSearchChange(searchValue)"
+            placeholder="Search by city name" style="border: 1px solid #00670c;" />
+          <a (click)="clearSearch()">
+            <i class="fa fa-close close_btn"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-2">
+
+        <button type="button" class="btn btn-block btn-success active" data-toggle="modal" data-target="#enterGstin"
+          aria-pressed="true" style="background: #00670c;margin-left: -5px;padding: 6px 6px;">Add GSTIN</button>
+
+      </div>
+      <div class="col-sm-2 col-md-2">
+
+        <button type="button" class="btn btn-block btn-success active" data-toggle="modal" data-target="#enterCity"
+          aria-pressed="true" style="background: #00670c;margin-left: -5px;padding: 6px 6px;">Add New City</button>
+
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table customers">
+                <thead>
+                  <tr>
+                    <th>City Name</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cityData of cityList">
+                    <td>{{cityData.name}}</td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-4 col-sm-4 cif-list-icon"></div>
+                        <div class="col-md-2 col-sm-2 cif-list-icon"><i class="fa fa-pencil-square-o" data-toggle="modal"
+                            data-target="#updateCity" aria-hidden="true"></i></div>
+                        <div class="col-md-2 col-sm-2 cif-list-icon"><i class="fa fa-trash-o" data-toggle="modal"
+                            data-target="#deleteCity" aria-hidden="true" style="color: red;"></i></div>
+                        <div class="col-md-4 col-sm-4 cif-list-icon"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Enter GSTIN Modal -->
+<div id="enterGstin" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter GSTIN</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Enter GSTIN</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Enter GSTIN" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Update</button>
+        <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Enter GSTIN End -->
+
+<!-- Enter City Modal -->
+<div id="enterCity" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter City</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Enter City Name</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Enter City Name" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Save</button>
+        <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Enter City End -->
+
+<!-- Update City Modal -->
+<div id="updateCity" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update City</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Update City Name</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Enter City Name" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Update</button>
+        <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Update City End -->
+
+<!-- Delete City Modal -->
+<div id="deleteCity" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete City</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body" style="text-align: center;">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="inline-part-down">
+              <div class="form-group row">
+                <p style="margin-left: 13px;">Do you want to delete this city ?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">Yes</button>
+        <button type="button" class="btn btn-success btn_save" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete City End -->

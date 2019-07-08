@@ -1,0 +1,727 @@
+<Section id="page_heading-detail card-detail">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 margin-left-right">
+        <div class="page-heading-detail card-detail">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <h1 class="Enter-details">
+                Enter cif details
+              </h1>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="form-group">
+                <input class="form-control autocomplete" [(ngModel)]="searchValue" (keyup)="onSearchChange(searchValue)"
+                  placeholder="Search by name" style="border: 1px solid #00670c;" />
+                <a (click)="clearSearch()">
+                  <i class="fa fa-close close_btn"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+
+              <button type="button" class="btn btn-block btn-success active single_btn" data-toggle="modal" data-target="#adduserModel"
+                aria-pressed="true">Add New User</button>
+              <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bootstrapModel">click to open</button>    -->
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-6 col-sm-6 margin-left-right">
+      <div class="card-detail">
+        <div class="card-header">
+          <strong>Warehouse Details</strong>
+          <!-- <small>Form</small> -->
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="name">Warehouse Name</label>
+                <select class="form-control drop1" required [(ngModel)]="cifForm.warehouse" (ngModelChange)="selectWareHouse(cifForm.warehouse)">
+                  <option disabled hidden [value]="selectUndefinedOptionValue">Select Warehouse</option>
+                  <option *ngFor="let list of mandiList" value='{{list}}'>{{list.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Warehouse Id</label>
+                <input class="form-control" [(ngModel)]="cifForm.warehouseId" readonly style="background:#ffffff;">
+              </div>
+            </div>
+          </div>
+          <!--/.row-->
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="ccnumber">Warehouse Address</label>
+                <textarea id="textarea-input" name="textarea-input" class="form-control" placeholder="" rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+          <!--/.row-->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 margin-left-right">
+      <div class="card-detail">
+        <div class="card-header">
+          <strong>Depositor Details</strong>
+          <!-- <small>Form</small> -->
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Name Of Depositor</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Depositor Address</label>
+                <textarea id="textarea-input" name="textarea-input" class="form-control" placeholder="" rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+          <!--/.row-->
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">User ID</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Contact Number</label>
+                <input placeholder="" required OnlyNumber class="form-control" name="phoneNumber" [(ngModel)]="cifForm.phoneNumber"
+                  pattern="[0-9]{10,10}" maxlength="10">
+              </div>
+            </div>
+          </div>
+          <!--/.row-->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12 margin-left-right" style="margin-top:10px;">
+      <div class="card-detail">
+        <div class="card-header">
+          <strong>Warehouse Details</strong>
+          <!-- <small>Form</small> -->
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="name">Commodity</label>
+                <select class="form-control" [(ngModel)]='cifForm.productId' required (ngModelChange)='getProductDetails()'>
+                  <option disabled hidden [value]="selectUndefinedOptionValue">Select Commodity</option>
+                  <option *ngFor="let list of productList" value='{{list._id}}'>{{list.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="name">Unit</label>
+                <select class="form-control" [(ngModel)]="cifForm.unitId" required>
+                  <option disable hidden [value]="selectUndefinedOptionValue">Select Unit</option>
+                  <option *ngFor="let list1 of unitList" value='{{list1._id}}'>{{list1.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">DP Name</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="DP Name">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Client ID</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="Client ID">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Market Rate Of Commodity (Per Qt.)</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="Enter price to">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="inline-radios"><strong>Partial Buy Allowed</strong></label>
+                  <div class="col-md-8 col-form-label">
+                    <div class="form-check form-check-inline mr-1" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="checkbox" id="checkbox1" value="option1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Total Quantity (In Qt.)</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="ccnumber">Value of Commodity (₹)</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios"><strong>Storage Type</strong></label>
+                  <div class="col-md-9 col-form-label">
+                    <div class="form-check form-check-inline mr-3" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio1"
+                        [(ngModel)]='cifForm.storageType' value="FUNDING" ngRequired="!cifForm.storageType">
+                      <label class="form-check-label" for="inlineRadio1">Funding </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-3">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio2"
+                        [(ngModel)]='cifForm.storageType' value="LISTING" ngRequired="!cifForm.storageType">
+                      <label class="form-check-label" for="inlineRadio2">Listing</label>
+                    </div>
+                    <div class="form-check form-check-inline mr-3">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio3"
+                        [(ngModel)]='cifForm.storageType' value="STORAGE" ngRequired="!cifForm.storageType">
+                      <label class="form-check-label" for="inlineRadio3">Storage</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6" *ngIf="cifForm.storageType =='FUNDING'">
+              <div class="form-group">
+                <label for="name">Name Of Financing Bank</label>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <select class="form-control" [(ngModel)]='cifForm.bankId' required (ngModelChange)='getBranchList(cifForm.bankId)'>
+                      <option disabled hidden [value]="selectUndefinedOptionValue">Select Bank</option>
+                      <option *ngFor="let list of bankList" value='{{list._id}}'>{{list._id}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                    <select class="form-control" [(ngModel)]='cifForm.branchId' required>
+                      <option disabled hidden [value]="selectUndefinedOptionValue">Select Branch</option>
+                      <option *ngFor="let branch of branchList" value='{{branch._id}}'>{{branch.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label" for="inline-radios"><strong>Same WareHouse Transfer</strong></label>
+                  <div class="col-md-8 col-form-label">
+                    <div class="form-check form-check-inline mr-1" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="checkbox" [(ngModel)]="otherForm.sameWarehouseTransaction"
+                        (click)="toggleCheckBox()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-5" *ngIf="otherForm.sameWarehouseTransaction == true">
+              <div class="form-group">
+                <label for="ccnumber">CWF Ref No.</label>
+                <input type="text" required OnlyNumber class="form-control" id="warehouseid" placeholder="CWF Ref No."
+                  [(ngModel)]="cifForm.cwfRefNumber">
+              </div>
+            </div>
+            <div class="col-sm-1 col-md-2" *ngIf="otherForm.sameWarehouseTransaction == true">
+              <div class="inline-part-down">
+                <button type="button" class="btn btn-block btn-success active single_btn" (click)="getCwfData()">Search</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios"><strong>Insurance By</strong></label>
+                  <div class="col-md-9 col-form-label">
+                    <div class="form-check form-check-inline mr-3" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio1"
+                        value="option1">
+                      <label class="form-check-label" for="inlineRadio1">Depositor </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-3">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio2"
+                        value="option2">
+                      <label class="form-check-label" for="inlineRadio2">CGRCML </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-3">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio3"
+                        value="option3">
+                      <label class="form-check-label" for="inlineRadio3">BANK </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="name">Insurance Company</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="Name of insurance company">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios">Case Type</label>
+                  <div class="col-md-9 col-form-label">
+                    <div class="form-check form-check-inline mr-2" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio1"
+                        value="option1">
+                      <label class="form-check-label" for="inlineRadio1">PW </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-2">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio2"
+                        value="option2">
+                      <label class="form-check-label" for="inlineRadio2">SM </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-2">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio3"
+                        value="option3">
+                      <label class="form-check-label" for="inlineRadio3">CM </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-3">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio3"
+                        value="option3">
+                      <label class="form-check-label" for="inlineRadio3">SP </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <label for="name">Old Wr Number</label>
+                <input type="text" class="form-control" id="warehouseid" placeholder="Old Wr Number">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios">Rent (as per)</label>
+                  <div class="col-md-9 col-form-label">
+                    <div class="form-check form-check-inline mr-4" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio1"
+                        value="option1">
+                      <label class="form-check-label" for="inlineRadio1">BAG </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-5">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio2"
+                        value="option2">
+                      <label class="form-check-label" for="inlineRadio2">MT </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="inline-part-down">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="inline-radios">Rent Billing</label>
+                  <div class="col-md-9 col-form-label">
+                    <div class="form-check form-check-inline mr-4" id="inline-radios">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio1"
+                        value="option1">
+                      <label class="form-check-label" for="inlineRadio1">DAY </label>
+                    </div>
+                    <div class="form-check form-check-inline mr-5">
+                      <input class="form-check-input my-check-box" type="radio" name="inline-radios" id="inlineRadio2"
+                        value="option2">
+                      <label class="form-check-label" for="inlineRadio2">WEEK </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="file-input"><strong>Full Stack Image</strong></label>
+                <div class="col-md-8">
+                  <input type="file" id="file-input" name="file-input">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="file-input"><strong>Stack Card Image</strong></label>
+                <div class="col-md-8"><input type="file" id="file-input" name="file-input">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="profile-block">
+                <div class="m-b-0" style="text-align: center;position: relative;height: 165px;margin: 20px auto;">
+                  <img style="width: 250px;height: 150px;border-radius: 3%;" src="assets\img\avatars\def_img.png" id="fullImg">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="profile-block">
+                <div class="m-b-0" style="text-align: center;position: relative;height: 165px;margin: 20px auto;">
+                  <img style="width: 250px;height: 150px;border-radius: 3%;" src="assets\img\avatars\def_img.png" id="fullImg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <div class="view-inline tag-btn text-center">
+                <div class="button-border">
+                  <a class="btn btn-border" data-toggle="modal" data-target="#addvehicle">Add Vehicle Detail</a>
+                </div>
+              </div>
+              <!-- <button type="button" class="btn btn-block btn-success active single_btn" data-toggle="modal" 
+                          data-target="#addvehicle" aria-pressed="true" style="width: 42%;margin-left: 29%;">Add Vehicle Detail</button> -->
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="view-inline tag-btn text-center">
+                <div class="button-border">
+                  <a class="btn btn-border" data-toggle="modal" data-target="#addstack">Add Stack Detail</a>
+                </div>
+              </div>
+              <!-- <button type="button" class="btn btn-block btn-success active single_btn" data-toggle="modal" 
+                          data-target="#addstack" aria-pressed="true" style="width: 42%;margin-left: 29%;">Add Stack Detail</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <button type="button" class="btn btn-block btn-success active single_btn" aria-pressed="true" style="width: 25%;margin-left: 38%;
+      font-size: 25px;padding: 5px 5px;margin-top: 10px;margin-bottom: 10px;">Save Data</button>
+    </div>
+  </div>
+  </div> -->
+
+<div class="view-inline tag-btn text-center">
+  <div class="button-border">
+    <a class="btn btn-border">Save Data</a>
+  </div>
+</div>
+
+<!-- Add User Modal -->
+<div id="adduserModel" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter User details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="inline-part-down">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="inline-radios">User Type</label>
+                <div class="col-md-9 col-form-label">
+                  <div class="form-check form-check-inline mr-4" id="inline-radios">
+                    <input class="form-check-input my-check-box" type="radio" [(ngModel)]="userForm.userType" value="TRADER"
+                      ngRequired="!userForm.userType" name="inline-radios" id="inlineRadio1">
+                    <label class="form-check-label" for="inlineRadio1">Trader </label>
+                  </div>
+                  <div class="form-check form-check-inline mr-5">
+                    <input class="form-check-input my-check-box" type="radio" [(ngModel)]="userForm.userType" value="KISSAN"
+                      ngRequired="!userForm.userType" name="inline-radios" id="inlineRadio2">
+                    <label class="form-check-label" for="inlineRadio2">Kisan </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Name Of Depositor</label>
+              <input type="text" class="form-control" id="warehouseid" [(ngModel)]="userForm.name" placeholder="Name"
+                maxlength="121" focus="true" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Contact Number</label>
+              <input type="text" class="form-control" id="warehouseid" [(ngModel)]="userForm.phoneNumber" placeholder="Phone Number"
+                maxlength="10" numbersOnly required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Depositor Address</label>
+              <textarea id="textarea-input" name="textarea-input" class="form-control" [(ngModel)]="userForm.address"
+                placeholder="Enter address here..." rows="1"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12" *ngIf="userForm.userType=='TRADER'">
+            <div class="form-group">
+              <label for="name">Select State</label>
+              <select class="form-control" required [(ngModel)]='userForm.stateId'>
+                <option disabled hidden [value]="selectUndefinedOptionValue">Select State</option>
+                <option *ngFor="let list of stateList" value='{{list._id}}'>{{list.stateName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12" *ngIf="userForm.userType=='TRADER'">
+            <div class="form-group">
+              <label for="ccnumber">Enter GST</label>
+              <input type="text" class="form-control" id="warehouseid" [(ngModel)]="userFormnumber" placeholder="Enter GST">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn_save" (click)="saveUser()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add User Modal End -->
+
+<!-- Add Vehicle Modal -->
+<div id="addvehicle" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter Vehicle details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Vehicle Number</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Vehicle Number">
+            </div>
+          </div>
+          <!-- <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="ccnumber">Total Weight</label>
+                  <input type="text" class="form-control" id="warehouseid" placeholder="Total Weight (vehicle+goods in MT">
+                </div>
+              </div> -->
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Total Weight</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Total Weight (vehicle+goods in MT)">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <!-- <label for="ccnumber">Total Weight</label> -->
+              <input type="text" class="form-control" id="warehouseid" placeholder="0">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <!-- <label for="ccnumber">Total Weight</label> -->
+              <input type="text" class="form-control" id="warehouseid" placeholder="0">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Number of bags</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Number of bags">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Weighbridge name & slip no.</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Weighbridge name & slip no.">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Gate pass no.</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Gate pass no.">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Name of supplier/agent</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Name of supplier/agent">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Location of supplier/agent</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Location of supplier/agent">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn_save">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Vehicle Modal End -->
+
+<!-- Add Stack Modal -->
+<div id="addstack" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enter Stack details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Godown Number</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Godown Number">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Stack Number</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Stack Number">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Lot Number</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Lot Number">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Stnd. weight per bag (incl. of Gunnies)</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Stnd. weight per bag (incl. of Gunnies)">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Number of bags</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="Number of bags">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label for="ccnumber">Select Truck</label>
+            <select class="form-control" id="warehouseid" placeholder="Select Truck">
+              <option>Select Truck</option>
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="ccnumber">Location of supplier/agent</label>
+                    <input type="text" class="form-control" id="warehouseid" placeholder="Location of supplier/agent">
+                  </div>
+              </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn_save">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Stack Modal End -->

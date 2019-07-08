@@ -1,0 +1,248 @@
+<Section id="page_heading">
+    <div class="page-heading">
+        <div class="row margin-left-right">
+            <div class="col-md-5 col-sm-5">
+                <h1 class="Enter-details">
+                   AUM DAILY REPORT
+               </h1>
+            </div>
+              <div class="col-md-3 col-sm-3">
+                  <div class="form-group">
+                    <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date" style="border: 1px solid #00670c;">
+                    </div>
+              </div>
+              <div class="col-sm-4 col-md-4 btn_right">
+              <div class="form-group">
+                  <div class="containerdiv hidden-sm hidden-xs visible-md visible-lg">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active btn-active">
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked> Summary report
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="option2" autocomplete="off"> Custom report
+                    </label>
+                </div>
+                  </div>
+                  <div class="containerdiv hidden-md hidden-lg visible-sm visible-xs">
+                <div class="btn-group btn-group-toggle visible-xs visible-sm hidden-md" data-toggle="buttons">
+                    <label class="btn btn-secondary active btn-active">
+                      <input type="radio" name="options" id="option1" autocomplete="off" checked> Summary
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="option2" autocomplete="off"> Custom
+                    </label>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+    </div>
+    </div>
+  </Section>
+
+  <Section id="page_heading" style="margin-top: 15px;">
+      <div class="row">
+          <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="page-heading1">
+          <div class="row">
+              <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                      <select class="form-control" style="border: 1px solid #00670c;">
+                        <option>Select State</option>
+                        <option>Punjab</option>
+                        <option>Delhi</option>
+                      </select>
+                    </div>
+              </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="form-group">
+                        <select class="form-control" style="border: 1px solid #00670c;">
+                          <option>Select Bank</option>
+                          <option>Punjab</option>
+                          <option>Delhi</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <input class="form-control autocomplete" placeholder="Enter City" style="border: 1px solid #00670c;" />
+                      </div>
+                </div>
+                <div class="clearfix"></div>
+      </div>
+      </div>
+      </div>
+    </div>
+    </Section>
+  <!--bank-->
+  <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 margin-left-right">
+          <div class="card" style="margin-bottom: 0px;text-align: -webkit-center;">
+            <div class="back-btn">
+              <a class="btn btn-info" style="padding: 5px 9px; float: left; background: #00670c;color: #ffffff;margin-top: 5px;margin-left: 5px;" ng-click="goToBank()">
+                  <i class="fa fa-arrow-circle-left" style="font-size:24px;"></i></a>
+                </div>
+            <div class="amu-container">
+              <div class="card-body">
+              <div class="card-view">
+                <div class="heading-card">
+                    <h1 class="card-name">PAN India Banks</h1>
+                </div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bank Name</th>
+                        <th scope="col">Previous Day</th>
+                        <th scope="col">Next Day</th>
+                        <th><div class="row">
+                          <div class="col-md-4"></div>
+                            <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px; ">+/-</div>
+                            <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px;">
+                              <i class="fa fa-sort" aria-hidden="true"></i></div>
+                              <div class="col-md-4"></div>
+                        </div>
+                      </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="total" style="font-weight: 500;">
+                        <td>Total</td> 
+                        <td>₹329.11 Cr.</td>
+                        <td>₹329.11 Cr.</td>
+                        <td>₹0.00 Cr.</td>
+                      </tr>
+                      <tr>
+                          <a href="#"><td style="color: #1738D9;">PNB BANK</td></a> 
+                          <td>222</td>
+                          <td>50</td>
+                          <td>50</td>
+                        </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+            </div>
+                </div>
+               </div>
+        </div>
+      </div>
+      <!--bank end-->
+
+      <!--state-->
+      <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <div class="card" style="margin-bottom: 0px;text-align: -webkit-center;">
+                <div class="back-btn">
+                  <a class="btn btn-info" style="padding: 5px 9px; float: left; background: #00670c;color: #ffffff;margin-top: 5px;margin-left: 5px;" ng-click="goToBank()">
+                      <i class="fa fa-arrow-circle-left" style="font-size:24px;"></i></a>
+                    </div>
+                <div class="amu-container">
+                  <div class="card-body">
+                  <div class="card-view">
+                    <div class="heading-card">
+                        <h1 class="card-name">PAN India Banks</h1>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">State</th>
+                            <th scope="col">Previous Day</th>
+                            <th scope="col">Next Day</th>
+                            <th><div class="row">
+                              <div class="col-md-4"></div>
+                                <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px; ">+/-</div>
+                                <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px;">
+                                  <i class="fa fa-sort" aria-hidden="true"></i></div>
+                                  <div class="col-md-4"></div>
+                            </div>
+                          </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="total" style="font-weight: 500;">
+                            <td>Total</td> 
+                            <td>₹329.11 Cr.</td>
+                            <td>₹329.11 Cr.</td>
+                            <td>₹0.00 Cr.</td>
+                          </tr>
+                          <tr>
+                              <a href="#bankDetail" data-toggle="modal" data-target="#bankDetail"><td style="color: #1738D9;">Rajasthan</td></a> 
+                              <td>222</td>
+                              <td>50</td>
+                              <td>50</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+                </div>
+                    </div>
+                   </div>
+            </div>
+          </div>
+
+          <!-- Add User Modal -->
+  <div id="bankDetail" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-success" role="document">
+       <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">State-Bank details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+  <!-- model body section -->
+           <div class="modal-body">
+              <div class="amu-container">
+                  <div class="card-body">
+                  <div class="card-view">
+                    <div class="heading-card">
+                        <h1 class="card-name">PAN India Banks</h1>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">City</th>
+                            <th scope="col">Previous Day</th>
+                            <th scope="col">Next Day</th>
+                            <th><div class="row">
+                              <div class="col-md-4"></div>
+                                <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px; ">+/-</div>
+                                <div class="col-md-2 col-sm-2 cif-list-icon" style="padding-left:0px;padding-right: 0px;">
+                                  <i class="fa fa-sort" aria-hidden="true"></i></div>
+                                  <div class="col-md-4"></div>
+                            </div>
+                          </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="total" style="font-weight: 500;">
+                            <td>Total</td> 
+                            <td>₹329.11 Cr.</td>
+                            <td>₹329.11 Cr.</td>
+                            <td>₹0.00 Cr.</td>
+                          </tr>
+                          <tr>
+                              <a href="#bankDetail" data-toggle="modal" data-target="#bankDetail"><td style="color: #1738D9;">Rajasthan</td></a> 
+                              <td>222</td>
+                              <td>50</td>
+                              <td>50</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+                </div>
+            
+           </div>
+                 <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn_save">Save</button>
+                 </div> -->
+      </div>
+      </div>
+      </div>
+  <!-- Add User Modal End -->

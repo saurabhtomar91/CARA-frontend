@@ -1,0 +1,156 @@
+.card{
+    box-shadow: 0px 2px 2px #888888;
+    max-height: 533px;
+}
+.card-body {
+    margin-top: 0px;
+}
+.card-header{
+    background-color: #00670c;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.amu-container{
+    width: 900px;
+}
+.amu-container .card-view {
+    background: #ffffff;
+    width: 100%;
+    box-shadow: 0 10px 6px -6px #777;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.amu-container .card-view .heading-card {
+    text-align: center;
+    background: #EA6A34;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.heading-card .card-name {
+    font-size: 20px;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.card-view th{
+    border-top: none;
+    text-align: center;
+    color: #00670c;
+}
+.card-view td{
+    border: none;
+}
+.card-body table {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.modal-dialog {
+    max-width: 930px !important;
+    margin: 1.75rem auto;
+}
+.hidden-md {
+    display:none !important;
+}
+.btn_right{
+    text-align: right;
+    right: 2%;
+}
+
+// rsponsive
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .card{
+        overflow-x: auto;
+    }
+    .amu-container .card-view{
+        // overflow-x: auto;
+        // padding: 10px 10px;
+        width: 80%;
+    }
+    .amu-container{
+        width: 750px;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 0px;
+    }
+    .card-body table {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    // .page-heading{
+    //     display: flex;
+    //     flex-wrap: nowrap;
+    //     overflow-x: auto;
+    // }
+    .btn-group-toggle{
+        margin-left: -10px;
+    }
+    .modal-dialog {
+        max-width: 640 !important;
+        margin: 1.75rem auto;
+    }
+    .hidden-sm{
+        display: none !important;
+    }
+    .hidden-md {
+        display:block !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .card{
+        overflow-x: auto;
+    }
+    .amu-container .card-view{
+        // overflow-x: auto;
+        // padding: 10px 10px;
+        width: 80%;
+    }
+    .amu-container{
+        width: 750px;
+    }
+    .card .pagination-outer{
+        margin-right: 0% !important;
+        position: fixed;
+        z-index: 999;
+        top: 161px;
+        right: 33px;
+    }
+    .card-body {
+        margin-top: 0px;
+    }
+    .card-body table {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    // .page-heading{
+    //     display: flex;
+    //     flex-wrap: nowrap;
+    //     overflow-x: auto;
+    // }
+    .btn-group-toggle{
+        margin-left: -10px;
+    }
+    .modal-dialog {
+        max-width: 640px !important;
+        margin: 1.75rem auto;
+    }
+    .hidden-sm{
+        display: none !important;
+    }
+    .hidden-md {
+        display:block !important;
+    }
+}

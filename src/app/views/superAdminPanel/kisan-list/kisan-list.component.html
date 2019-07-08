@@ -1,0 +1,147 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-righ">
+      <div class="col-md-9 col-sm-9">
+        <h1 class="Enter-details">
+          KISAN LIST
+        </h1>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="form-group">
+          <input class="form-control autocomplete" [(ngModel)]="searchValue" (input)="onSearchChange(searchValue)"
+            placeholder="Search by Kisan Name & No." style="border: 1px solid #00670c;" />
+          <a (click)="clearSearch()">
+            <i class="fa fa-close close_btn"></i>
+          </a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+            <div class="pagination-outer" style="float: right;margin-right: 5px;">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                    <span class="page-link" (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                  </li>
+                  <li class="page-item active">
+                    <span class="page-link">
+                      {{updatedData.currentPage}}
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                    <span class="page-link" (click)="prevAndNext('next' ,false )">&raquo;</span>
+                  </li>
+                  <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}}
+                      of {{updatedData.total}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Kisan Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Created</th>
+                    <th scope="col" style="color:#00670c;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of updatedData.list">
+                    <td>{{data.uniqueId}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.phoneNumber}}</td>
+                    <td *ngIf='data.address'>{{data.address.line1}}</td>
+                    <td *ngIf='!data.address'></td>
+                    <td>{{data.status}}</td>
+                    <td>{{data.createdAt | date :'MMM ,dd yyyy'}}</td>
+                    <td>
+                      <div class="row">
+                        <!-- <div class="col-md-4 col-sm-4 cif-list-icon"></div> -->
+                        <div class="col-md-12 col-sm-12 cif-list-icon"><i class="fa fa-pencil-square-o" (click)="openModal(data)"
+                            data-toggle="modal" data-target="#userDetail" aria-hidden="true"></i></div>
+                        <!-- <div class="col-md-4 col-sm-4 cif-list-icon"></div> -->
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;margin-top: 5px;font-size: 25px;color: #00670c; letter-spacing: 3px;text-transform: uppercase;"
+          *ngIf="updatedData.list == 0"><img src="assets/img/avatars/list_empty1.png" style="width: 180px;"><br>{{emptyListMsg}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add User Modal -->
+<div id="userDetail" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update User details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">User I'd</label>
+              <input type="text" [(ngModel)]="userData.uniqueId" class="form-control" placeholder="" readonly style="background: #ffffff;">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Name</label>
+              <input type="text" [(ngModel)]="userData.name" class="form-control" placeholder="" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">User Address</label>
+              <textarea id="textarea-input" *ngIf='userData.address' type="text" [(ngModel)]="userData.address.line1"
+                class="form-control" rows="1" required></textarea>
+              <textarea id="textarea-input" *ngIf='!userData.address' type="text" class="form-control" rows="1"
+                required></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click)="updateUser()" class="btn btn-success btn_save" data-dismiss="modal">Update</button>
+        <!-- <button type="button" (click)="updateUser()" [disabled]="!userform.inValid" class="btn btn-success btn_save"  data-dismiss="modal">Update</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add User Modal End -->

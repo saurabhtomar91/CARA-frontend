@@ -1,0 +1,134 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-right">
+      <div class="col-md-9 col-sm-9">
+        <h1 class="Enter-details">
+          Pending commodity list
+        </h1>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <div class="form-group">
+          <input class="form-control autocomplete" [(ngModel)]="searchValue" (input)="onSearchChange(searchValue)"
+            placeholder="Search by name,no.,cif,commodity" style="border: 1px solid #00670c;" />
+          <a (click)="clearSearch()">
+            <i class="fa fa-close close_btn"></i>
+          </a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+            <div class="pagination-outer" style="float: right;margin-right: 5px;">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                    <span class="page-link" (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                  </li>
+                  <li class="page-item active">
+                    <span class="page-link">
+                      {{updatedData.currentPage}}
+                      <!-- <span class="sr-only">{{updatedData.page}}</span> -->
+                    </span>
+                  </li>
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                    <span class="page-link" (click)="prevAndNext('next' ,false )">&raquo;</span>
+                  </li>
+                  <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}}
+                      of {{updatedData.total}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">CIF NO.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Commodity Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Mandi</th>
+                    <th scope="col">WR Price(₹)</th>
+                    <th scope="col">Created</th>
+                    <th scope="col" style="color:#00670c;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cif of updatedData.list">
+                    <td>{{cif.cifNumber}}</td>
+                    <td>{{cif.userId[0].name}}</td>
+                    <td>{{cif.userId[0].phoneNumber}}</td>
+                    <td>{{cif.userId[0].userType}}</td>
+                    <td>{{cif.productId[0].name}}</td>
+                    <td>{{cif.wrQuantity | number:'.3-3'}}</td>
+                    <td>{{cif.mandiId.name}}</td>
+                    <td>{{cif.wrPrice}}</td>
+                    <td>{{cif.createdAt| date :'MMM ,dd yyyy'}}</td>
+                    <!-- <td><span style="color: #00670c;">New</span></td> -->
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                          <button type="button" class="btn btn-block btn-success active" data-toggle="modal"
+                            data-target="#lab" aria-pressed="true" style="background: #00670c;text-align: center; width: 100%; padding: 3px 5px; margin-top: -3px; font-size: 10px;">Send
+                            to lab</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;margin-top: 5px;font-size: 25px;color: #00670c; letter-spacing: 3px;text-transform: uppercase;"
+          *ngIf="updatedData.list == 0"><img src="assets/img/avatars/list_empty1.png" style="width: 180px;"><br>{{emptyListMsg}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Send to lab Modal -->
+<div id="lab" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-success" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Sample I'd</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- model body section -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Sample i'd</label>
+              <input type="text" class="form-control" id="warehouseid" placeholder="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn_save">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Sent to lab End -->

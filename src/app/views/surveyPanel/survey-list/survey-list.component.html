@@ -1,0 +1,130 @@
+<Section id="page_heading">
+  <div class="page-heading">
+    <div class="row margin-left-right">
+      <div class="col-md-3 col-sm-3">
+        <h1 class="Enter-details">
+          SURVEY LIST
+        </h1>
+      </div>
+      <div class="col-md-2 col-sm-2">
+        <div class="form-group">
+          <input class="form-control autocomplete" [(ngModel)]="searchValue" (input)="onSearchChange(searchValue)"
+            placeholder="Search here..." style="border: 1px solid #00670c; position:relative;" />
+          <a (click)="clearSearch()">
+            <i class="fa fa-close close_btn"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-5 col-md-5 btn_right">
+        <div class="form-group" style="text-align: center;">
+          <div class="containerdiv hidden-sm hidden-xs visible-md visible-lg">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active btn-active" (click)="onStatusSelectionChange('PENDING')">
+                <input type="radio" [checked]="listType === 'PENDING'" name="options" checked> Pending survey
+              </label>
+              <label class="btn btn-secondary" (click)="onStatusSelectionChange('COMPLETED')">
+                <input type="radio" [checked]="listType === 'COMPLETED'" name="options"> Complete survey
+              </label>
+            </div>
+          </div>
+          <div class="containerdiv hidden-md hidden-lg visible-sm visible-xs">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active btn-active" (click)="onStatusSelectionChange('PENDING')">
+                <input type="radio" [checked]="listType === 'PENDING'" name="options" checked> Pending
+              </label>
+              <label class="btn btn-secondary" (click)="onStatusSelectionChange('COMPLETED')">
+                <input type="radio" [checked]="listType === 'COMPLETED'" name="options"> Complete
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <div class="form-group" style="text-align: center;">
+          <div class="containerdiv hidden-sm hidden-xs visible-md visible-lg">
+            <a routerLink="/survey/newSurvey"><button type="button" class="btn btn-block btn-success active single_btn"
+                aria-pressed="true">Add New Survey</button></a>
+          </div>
+          <div class="containerdiv hidden-md hidden-lg visible-sm visible-xs">
+            <i class="fa fa-plus add_icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</Section>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 margin-left-right">
+      <div class="card" style="margin-bottom: 0px;">
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+            <div class="pagination-outer" style="float: right;margin-right: 5px;">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.prev === true}">
+                    <span class="page-link" (click)="prevAndNext('prev' ,false )">&laquo;</span>
+                  </li>
+                  <li class="page-item active">
+                    <span class="page-link">
+                      {{updatedData.currentPage}}
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                  <li class="page-item" [ngClass]="{'disabled':updatedData.next === true}">
+                    <span class="page-link" (click)="prevAndNext('next' ,false )">&raquo;</span>
+                  </li>
+                  <li class="page-item"><a class="page-link" style="pointer-events: none;color: #00670c;">{{updatedData.from}}-{{updatedData.to}}
+                      of {{updatedData.total}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 margin-left-right">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Survey Id</th>
+                    <th scope="col">State</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Owner Name</th>
+                    <th scope="col">WH Name</th>
+                    <th scope="col">Owner Ph No.</th>
+                    <th scope="col">Last Update</th>
+                    <th scope="col" style="color:#00670c;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let survey of updatedData.list">
+                    <td>CGRCML11069</td>
+                    <td>{{survey.state}}</td>
+                    <td>{{survey.city}}</td>
+                    <td>{{survey.warehouseOwnerName}}</td>
+                    <td>{{survey.warehouseName}}</td>
+                    <td>{{survey.ownerContactNumber}}</td>
+                    <td>{{survey.updatedAt| date :'MMM ,dd yyyy'}}</td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-6 col-sm-6 cif-list-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                        <div class="col-md-6 col-sm-6 cif-list-icon"><i class="fa fa-pencil-square-o" data-toggle="modal"
+                            data-target="#userDetail" aria-hidden="true"></i></div>
+                        <!-- <div class="col-md-4 col-sm-4 cif-list-icon"></div> -->
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;margin-top: 5px;font-size: 25px;color: #00670c; letter-spacing: 3px;text-transform: uppercase;"
+          *ngIf="updatedData.list == 0"><img src="assets/img/avatars/list_empty1.png" style="width: 180px;"><br>{{emptyListMsg}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+.page-heading-detail{
+    background: #ffffff;
+    box-shadow: 0px 2px 2px #888888;
+    padding: 5px 5px;
+    color: #00670c;
+    margin-top: -15px;
+    margin-bottom: 9px;
+    height: 45px;
+}
+.page-heading-detail .Enter-details{
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 35px;
+}
+.card-body{
+    margin-top: 0px;
+}
+.card-detail{
+    box-shadow: 0px 2px 2px #888888 !important;
+    background: #ffffff;
+}
+.card-detail .card-header{
+    background-color: #00670c !important;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    letter-spacing: 1px !important;
+}
+.my-check-box{
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: 1px;
+}
+.mr-3, .mx-3 {
+    margin-right: 2rem !important;
+}
+.form-check-inline{
+    padding-left: 2px !important;
+}
+.inline-part-down{
+    margin-top: 29px;
+}
+.margin-left-right{
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+.single_btn{
+    background: #00670c !important;
+    margin-left: -5px;
+    color: #ffffff !important;
+}
+
+.tag-btn {
+    width: calc(100% - 0px);
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.view-inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+.tag-btn .btn-border {
+    border: 1px solid #00670c;
+    background-color: #00670c;
+    color: #ffffff;
+    border-radius: 5px;
+    min-width: 80px;
+    padding: 5px 30px;
+}
+// .tag-btn .btn-border:hover {
+//     border: 1px solid #00670c;
+//     background-color: #00670c;
+//     color: #ffffff;
+// }
+// #myselect-container {
+//     position:relative;
+//     height:auto;
+//     width:100%;
+//     // z-index: 0;
+//     margin-bottom: 36px;
+// }
+// #myselect-container select {
+//     position:absolute;
+//     z-index: 9999;
+// }
+.form-control option{
+    height: 100px !important;
+    overflow: scroll;
+}
+.form-group {
+    margin-bottom: 5px !important;
+}
+.form-group .close_btn{
+    position: absolute;
+    top: 0%;
+    line-height: 38px;
+    font-size: 14px;
+    right: 9%;
+    cursor: pointer;
+    vertical-align: middle;
+}
