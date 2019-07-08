@@ -14,9 +14,8 @@ declare var $: any;
 export class LoginComponent {
 
   loginModel: any = {
-    phoneNumber: '',
-    otp: '',
-    userId: ''
+    emailId: '',
+    password: ''
   };
 
   isShow:boolean=false;
@@ -53,6 +52,7 @@ export class LoginComponent {
    * Login Method
    */
   public Login(loginModel: any) {
+    debugger
     this.userService.loginUser(this.loginModel)
       .then(result => {
         if (result.responseCode === 200) {
