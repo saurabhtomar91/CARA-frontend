@@ -1,14 +1,14 @@
 export const GlobalVariable = Object.freeze({
 
-    BASE_API_URL: "http://localhost:8080",
-    //BASE_API_URL: "http://13.127.101.92:8080",
+    //BASE_API_URL: "http://10.36.24.47:4001",
+    BASE_API_URL: "http://13.127.101.92:4001",
     //BASE_API_URL: "http://192.168.0.85:8080"
 });
-
+    debugger
 export const RequestApi = Object.freeze({
-
+    
     //User API Call
-    POST_USER_LOGIN: GlobalVariable.BASE_API_URL + '/employee/loginEmployee',
+    POST_USER_LOGIN: GlobalVariable.BASE_API_URL + '/admin/login',
     POST_USER_VERIFY_OTP: GlobalVariable.BASE_API_URL + '/employee/verifyOtp',
     POST_USER_RESEND_OTP: GlobalVariable.BASE_API_URL + '/employee/sentOtpToUser',
     POST_USER_EMAIL_OTP: GlobalVariable.BASE_API_URL + '/employee/sentOtpToUserByEmail',
