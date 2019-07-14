@@ -55,6 +55,7 @@
     "ngx-spinner": "^6.1.2",
     "ngx-toastr": "^9.1.1",
     "ngx-wow": "^2.0.0",
+    "node-modules": "^1.0.1",
     "node-sass": "^4.12.0",
     "popper.js": "^1.14.5",
     "rxjs": "^6.3.3",
