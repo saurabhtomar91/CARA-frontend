@@ -55,6 +55,8 @@ import { LoaderInterceptorService } from './constant/loader.interceptor';
 // Tooltip module
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -86,6 +88,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     LoginComponent,
     HomepageComponent,
     OnlyNumber
+
   ],
   providers: [{
     provide: LocationStrategy,
